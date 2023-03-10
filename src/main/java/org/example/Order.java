@@ -1,30 +1,29 @@
 package org.example;
 
+import java.util.List;
+
 public class Order {
-
     private int id;
-    private String products;
+    private List<Integer> productIds;
 
-    public Order() {}
-
-    public Order(int id, String products) {
+    public Order(int id, List<Integer> productIds) {
         this.id = id;
-        this.products = products;
+        this.productIds = productIds;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public List<Integer> getProductIds() {
+        return productIds;
     }
 
-    public String getProducts() {
-        return products;
-    }
-
-    public void setProducts(String products) {
-        this.products = products;
+    @Override
+    public String toString() {
+        return "Bestellung{" +
+                "id=" + id +
+                ", produktIds=" + productIds +
+                '}';
     }
 }
