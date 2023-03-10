@@ -1,52 +1,33 @@
 package org.example;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShopService {
-    private ProductRepo productRepo;
-    private OrderRepo orderRepo;
-    private int nextOrderId;
 
-    public ShopService() {
-        this.productRepo = new ProductRepo();
-        this.orderRepo = new OrderRepo();
-        this.nextOrderId = 1;
+    private final ProductRepo productRepo;
+    private final OrderRepo orderRepo;
+
+    public ShopService(ProductRepo productRepo, OrderRepo orderRepo) {
+        this.productRepo = productRepo;
+        this.orderRepo = orderRepo;
     }
 
-    public void addProduct(int id, String name) {
-        Product product = new Product(id, name);
-        productRepo.addProduct(product);
-    }
-
-    public Product getProductById(int id) throws ProductNotFoundException {
-        Product product = productRepo.getProductById(id);
-        if (product == null) {
-            throw new ProductNotFoundException("Produkt mit der ID " + id + " wurde nicht gefunden.");
+    public Order orderProducts(List<String> productIds, String id) {
+        List<Product> productsToOrder = new ArrayList<>();
+        for (String productId : productIds) {
+            Product productToAdd = getProduct(productId);
+            productsToOrder.add(productToAdd);
         }
-        return product;
+        return orderRepo.addOrder(new Order(id, productsToOrder));
     }
 
-    public void placeOrder(List<Integer> productIds) throws ProductNotFoundException {
-        List<Product> products = new ArrayList<>();
-        for (int id : productIds) {
-            Product product = getProductById(id);
-            products.add(product);
-        }
-        Order order = new Order(nextOrderId++, products);
-        orderRepo.addOrder(order);
+    Product getProduct(String productId) {
+        return productRepo.getProduct(productId);
     }
 
-    public Order getOrderById(int id) throws OrderNotFoundException {
-        Order order = orderRepo.getOrderById(id);
-        if (order == null) {
-            throw new OrderNotFoundException("Bestellung mit der ID " + id + " wurde nicht gefunden.");
-        }
-        return order;
-    }
-
-    public List<Product> getAllProducts() {
-        return productRepo.getAllProducts();
-    }
-
-    public List<Order> getAllOrders() {
-        return orderRepo.getAllOrders();
+    public List<Order> listOrders() {
+        return orderRepo.listOrders();
     }
 }

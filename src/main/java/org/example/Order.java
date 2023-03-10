@@ -3,27 +3,27 @@ package org.example;
 import java.util.List;
 
 public class Order {
-    private int id;
-    private List<Integer> productIds;
+    private String id;
+    private List<Product> products;
 
-    public Order(int id, List<Integer> productIds) {
+    public Order(String id, List<Product> products) {
         this.id = id;
-        this.productIds = productIds;
+        this.products = products;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public List<Integer> getProductIds() {
-        return productIds;
+    public List<Product> getProducts() {
+        return products;
     }
 
     @Override
     public String toString() {
         return "Bestellung{" +
                 "id=" + id +
-                ", produktIds=" + productIds +
+                ", Produkte=" + products +
                 '}';
     }
 }

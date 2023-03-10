@@ -14,7 +14,7 @@ public class OrderRepo {
         orderList.add(order);
     }
 
-    public Order getOrderById(int id) {
+    public Order getOrderById(String id) {
         for (Order order : orderList) {
             if (order.getId() == id) {
                 return order;
@@ -23,7 +23,7 @@ public class OrderRepo {
         return null;
     }
 
-    public List<Order> getAllOrders() {
+    public List<Order> listOrders() {
         return new ArrayList<>(orderList);
     }
 }

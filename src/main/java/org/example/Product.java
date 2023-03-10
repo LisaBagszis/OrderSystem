@@ -1,16 +1,16 @@
 package org.example;
 
 public class Product {
-    private int id;
+    private String id;
     private String name;
 
-    public Product(int id, String name) {
+    public Product(String id, String name) {
         this.id = id;
         this.name = name;
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

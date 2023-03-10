@@ -1,14 +1,12 @@
 package org.example;
 
-import org.example.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepo {
     private List<Product> productList;
 
-    public ProductRepo() {
+    public ProductRepo(List<Product> products) {
         this.productList = new ArrayList<>();
     }
 
@@ -16,7 +14,7 @@ public class ProductRepo {
         productList.add(product);
     }
 
-    public Product getProductById(int id) {
+    public Product getProduct(String id) {
         for (Product product : productList) {
             if (product.getId() == id) {
                 return product;
