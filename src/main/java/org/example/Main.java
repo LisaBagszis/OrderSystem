@@ -13,7 +13,7 @@ public class Main {
         // Alle Produkte anzeigen
         List<Product> productList = shopService.getAllProducts();
         System.out.println("Alle Produkte:");
-        for (Product produk+ct : productList) {
+        for (Product product : productList) {
             System.out.println(product);
         }
 
