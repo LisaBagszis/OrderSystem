@@ -1,5 +1,15 @@
-package org.example;public class Main {
+package org.example;
+
+import java.util.ArrayList;
+
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        Product firstOrder = new Product(1, "Handtuch, Mülleimer, Seife");
+        Product secondOrder = new Product(2, "Decke");
+        ArrayList<Product> list = new ArrayList<>();
+        //list.add(0, firstOrder);
+        System.out.println(list);
+
     }
 }
